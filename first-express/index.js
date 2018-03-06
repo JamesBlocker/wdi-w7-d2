@@ -1,35 +1,23 @@
 var express = require('express')
 var app = express()
 var logger = require('morgan')
-var fs = require('fs')
+// var fs = require('fs')
+var pagesCtrl = require('./controllers/pages.js')
 var PORT = 3000
 
 app.use(logger('dev'))
 
-app.get('/', function(req, res) {
-    // String interpolation example
-    // var firstName = "James"
-    // var lastName = "Blocker"
-    // res.send(`Welcome, ${firstName} ${lastName}. Today is ${new Date()}`)
+// String interpolation example
+// var firstName = "James"
+// var lastName = "Blocker"
+// res.send(`Welcome, ${firstName} ${lastName}. Today is ${new Date()}`)
 
-    //Send file from views folder
-    fs.readFile('./views/home.html', 'utf-8', function(err, data) {
-        res.send(data)
-    })
+//Send file from views folder
+app.get('/', pagesCtrl.home)
 
-})
+app.get('/about', pagesCtrl.about)
 
-app.get('/about', function(req, res) {
-    fs.readFile('./views/about.html', 'utf-8', function(err, data) {
-        res.send(data)
-    })
-})
-
-app.get('/contact', function(req, res) {
-    fs.readFile('./views/contact.html', 'utf-8', function(err, data) {
-        res.send(data)
-    })
-})
+app.get('/contact', pagesCtrl.contact)
 
 app.listen(PORT, function(err) {
     // if(err) {
