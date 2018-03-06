@@ -14,9 +14,7 @@ app.use(logger('dev'))
 
 //Send file from views folder
 app.get('/', pagesCtrl.home)
-
 app.get('/about', pagesCtrl.about)
-
 app.get('/contact', pagesCtrl.contact)
 
 app.listen(PORT, function(err) {
