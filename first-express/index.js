@@ -20,11 +20,15 @@ app.get('/', function(req, res) {
 })
 
 app.get('/about', function(req, res) {
-    res.send("<h1>The about page</h1>")
+    fs.readFile('./views/about.html', 'utf-8', function(err, data) {
+        res.send(data)
+    })
 })
 
 app.get('/contact', function(req, res) {
-    res.send("<h1>Contact me!</h1>")
+    fs.readFile('./views/contact.html', 'utf-8', function(err, data) {
+        res.send(data)
+    })
 })
 
 app.listen(PORT, function(err) {
