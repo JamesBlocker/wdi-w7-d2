@@ -47,6 +47,12 @@ app.delete('/rats', function(req, res) {
     res.send(rats)
 })
 
-app.listen(PORT, function() {
+app.listen(PORT, function(err) {
     console.log(`Server started on port ${PORT}`)
 })
+
+
+books = {
+    {name: "Bible", author: "God"},
+    
+}
